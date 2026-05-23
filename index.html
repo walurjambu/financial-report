@@ -717,8 +717,8 @@ function confirmReset() {
 function exportCSV() {
   if (!transactions.length) { showToast('No data to export.', 'error'); return; }
   const header = ['ID','Type','Description','Amount (USD)','Category','Date','Time'];
-  const rows = transactions.map(t => [
-    t.id,
+  const rows = transactions.map((t, i) => [
+    i + 1,
     t.type,
     '"'+t.description.replace(/"/g,'""')+'"',
     // Amount with thousand separators — wrapped in quotes so the comma doesn't break CSV columns
